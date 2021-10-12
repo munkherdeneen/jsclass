@@ -127,3 +127,39 @@ describe("Bank SavingsAccunt withdraw test", function() {
 		);
 	});
 });
+
+//------Checking Bank class test starts from here.
+describe("Bank", () => {
+it("Checking addAccount()", () => {
+  let bank = new Bank();
+  bank.addAccount();
+  assert.strictEqual(new Account(1).toString(), bank.accountReport());
+});
+
+it("Checking addSavingsAccount()", () => {
+  let bank = new Bank();
+  bank.addSavingsAccount(1);
+  assert.strictEqual(
+    new SavingsAccount(2, 1).toString(),
+    bank.accountReport().split("\n")[0]
+  );
+});
+
+it("Checking addCheckingAccount()", () => {
+  let bank = new Bank();
+  bank.addCheckingAccount(1);
+  assert.strictEqual(
+    new CheckingAccount(3, 1).toString(),
+    bank.accountReport().split("\n")[0]
+  );
+});
+
+it("Checking closeAccount()", () => {
+  let bank = new Bank();
+  bank.addAccount();
+  bank.closeAccount(1);
+  bank.closeAccount(1);
+  bank.closeAccount(1);
+  assert.strictEqual(undefined, bank.accountReport().split("\n")[3]);
+});
+})
