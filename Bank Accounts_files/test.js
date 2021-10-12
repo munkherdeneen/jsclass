@@ -131,35 +131,49 @@ describe("Bank SavingsAccunt withdraw test", function() {
 //------Checking Bank class test starts from here.
 describe("Bank class test", () => {
 it("Bank addAccount test", () => {
-  let bank = new Bank();
-  bank.addAccount();
-  assert.strictEqual(new Account(1).toString(), bank.accountReport());
+	let bank = new Bank();
+	bank.addAccount();
+	assert.strictEqual(new Account(1).toString(), bank.accountReport());
 });
 
 it("Bank addSavingsAccount test", () => {
-  let bank = new Bank();
-  bank.addSavingsAccount(1);
-  assert.strictEqual(
-    new SavingsAccount(2, 1).toString(),
-    bank.accountReport().split("\n")[0]
-  );
+	let bank = new Bank();
+	bank.addSavingsAccount(1);
+	assert.strictEqual(
+		new SavingsAccount(2, 1).toString(),
+		bank.accountReport().split("\n")[0]
+	);
 });
 
 it("Bank addCheckingAccount test", () => {
-  let bank = new Bank();
-  bank.addCheckingAccount(1);
-  assert.strictEqual(
-    new CheckingAccount(3, 1).toString(),
-    bank.accountReport().split("\n")[0]
-  );
+	let bank = new Bank();
+	bank.addCheckingAccount(1);
+	assert.strictEqual(
+		new CheckingAccount(3, 1).toString(),
+		bank.accountReport().split("\n")[0]
+	);
 });
 
 it("Bank closeAccount test", () => {
-  let bank = new Bank();
-  bank.addAccount();
-  bank.closeAccount(1);
-  bank.closeAccount(1);
-  bank.closeAccount(1);
-  assert.strictEqual(undefined, bank.accountReport().split("\n")[3]);
+	let bank = new Bank();
+	bank.addAccount();
+	bank.closeAccount(1);
+	bank.closeAccount(1);
+	bank.closeAccount(1);
+	assert.strictEqual(undefined, bank.accountReport().split("\n")[3]);
 });
+
+it("Bank accountReport test", () => {
+    let bank = new Bank();
+    bank.addAccount(1);
+    bank.addSavingsAccount(3);
+    bank.addCheckingAccount(4);
+
+    assert.strictEqual(
+      [new Account(5), new SavingsAccount(6, 3), new CheckingAccount(7, 4)]
+        .map((item) => item.toString())
+        .join(" "),
+      bank.accountReport()
+    );
+  });
 })

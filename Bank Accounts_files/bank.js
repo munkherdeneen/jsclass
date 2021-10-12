@@ -43,6 +43,6 @@ class Bank {
 	}
 	
 	endOfMonth() {
-		
+		return this._accounts.map((account) => account.endOfMonth()).join(" ");
 	}
 }
