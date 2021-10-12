@@ -129,14 +129,14 @@ describe("Bank SavingsAccunt withdraw test", function() {
 });
 
 //------Checking Bank class test starts from here.
-describe("Bank", () => {
-it("Checking addAccount()", () => {
+describe("Bank class test", () => {
+it("Bank addAccount test", () => {
   let bank = new Bank();
   bank.addAccount();
   assert.strictEqual(new Account(1).toString(), bank.accountReport());
 });
 
-it("Checking addSavingsAccount()", () => {
+it("Bank addSavingsAccount test", () => {
   let bank = new Bank();
   bank.addSavingsAccount(1);
   assert.strictEqual(
@@ -145,7 +145,7 @@ it("Checking addSavingsAccount()", () => {
   );
 });
 
-it("Checking addCheckingAccount()", () => {
+it("Bank addCheckingAccount test", () => {
   let bank = new Bank();
   bank.addCheckingAccount(1);
   assert.strictEqual(
@@ -154,7 +154,7 @@ it("Checking addCheckingAccount()", () => {
   );
 });
 
-it("Checking closeAccount()", () => {
+it("Bank closeAccount test", () => {
   let bank = new Bank();
   bank.addAccount();
   bank.closeAccount(1);
